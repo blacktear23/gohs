@@ -1,4 +1,4 @@
-module github.com/flier/gohs
+module github.com/blacktear23/gohs
 
 go 1.14
 
