@@ -194,7 +194,7 @@ func newVectoredDatabase(db hsDatabase) (*vectoredDatabase, error) {
 	return &vectoredDatabase{newVectoredMatcher(newVectoredScanner(newBaseDatabase(db)))}, nil
 }
 
-func ConvertToVectoredDatabase(db Database) (Database, error) {
+func ConvertToVectoredDatabase(db Database) (VectoredDatabase, error) {
 	switch cdb := db.(type) {
 	case *streamDatabase:
 		return newVectoredDatabase(cdb.db)
