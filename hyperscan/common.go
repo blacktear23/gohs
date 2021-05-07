@@ -193,15 +193,3 @@ type vectoredDatabase struct {
 func newVectoredDatabase(db hsDatabase) (*vectoredDatabase, error) {
 	return &vectoredDatabase{newVectoredMatcher(newVectoredScanner(newBaseDatabase(db)))}, nil
 }
-
-func ConvertToVectoredDatabase(db Database) (VectoredDatabase, error) {
-	switch cdb := db.(type) {
-	case *streamDatabase:
-		return newVectoredDatabase(cdb.db)
-	case *blockDatabase:
-		return newVectoredDatabase(cdb.db)
-	case *vectoredDatabase:
-		return db, nil
-	}
-	return nil, errors.New("Unknown database type")
-}
